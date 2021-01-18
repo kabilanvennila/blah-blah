@@ -40,10 +40,11 @@ mycolor="#966b9d"
 myfont=18
 
 #Startapp Apps
-@hook.subscribe.startup_once
+@hook.subscribe.startup
 def autostart():
-	home=os.path.expanduser('~')
-	subprocess.Popen([home +'.config/qtile/autostart.sh'])
+    home = os.path.expanduser('~/.config/qtile/autostart')
+    subprocess.call([home])
+
 
 mod = "mod4"
 terminal ="alacritty"
@@ -113,13 +114,14 @@ layout_theme={"border_width":3,
 
 
 layouts = [
+    layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.Stack(**layout_theme,num_stacks=3),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    layout.MonadTall(**layout_theme),
+    #layout.MonadTall(**layout_theme),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -151,14 +153,14 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#a75f5f"),
                 widget.Systray(),
+		widget.Sep(linewidth=2),
                 widget.Clock(format='%a %I:%M %p',foreground=mycolor),
 		widget.Sep(linewidth=2),
 		widget.CurrentLayoutIcon(scale=0.7,foreground=mycolor),
 		widget.CurrentLayout(foreground=mycolor,fontsize=14),
 		widget.Sep(linewidth=2),
-                widget.QuickExit(foreground=mycolor),
+                widget.QuickExit(foreground=mycolor,default_text="[Logout]"),
 		widget.Spacer(length=5),
             ],
             30, margin=[10,16,0,16]
