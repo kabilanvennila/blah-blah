@@ -106,7 +106,8 @@ for i in groups:
     ])
 
 
-layout_theme={"border_width":3,
+layout_theme={
+"border_width":4,
 "border_focus": mycolor,
 "border_normal":"#000000",
 "margin":12
@@ -154,16 +155,15 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.Systray(),
-		widget.Sep(linewidth=2),
-                widget.Clock(format='%a %I:%M %p',foreground=mycolor),
-		widget.Sep(linewidth=2),
+		widget.Clock(format='%a %I:%M %p',foreground=mycolor,background="#ffff00"),
 		widget.CurrentLayoutIcon(scale=0.7,foreground=mycolor),
-		widget.CurrentLayout(foreground=mycolor,fontsize=14),
-		widget.Sep(linewidth=2),
-                widget.QuickExit(foreground=mycolor,default_text="[Logout]"),
-		widget.Spacer(length=5),
+		widget.CurrentLayout(background="#10e321",foreground="#000000",fontsize=14),
+		#widget.Sep(linewidth=0,padding=6),
+		widget.Spacer(length=5,background="#0f9dd1"),
+                widget.QuickExit(foreground="#000000",default_text="[Logout]",background="#0f9dd1"),
+		widget.Spacer(length=10,background="#0f9dd1"),
             ],
-            30, margin=[10,16,0,16]
+            33, margin=[8,16,0,16]
         ),
     ),
 ]
